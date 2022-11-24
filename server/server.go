@@ -72,11 +72,11 @@ func handle(client net.Conn) {
 
 	clients = append(clients, client)
 
-	welcomeMsg := fmt.Sprintf("Client %s has joined the chat", username)
+	welcomeMsg := fmt.Sprintf("%s has joined the chat", username)
 
 	log.Println(welcomeMsg)
 
-	broadcast(client, fmt.Sprintf("[Server]: %s", welcomeMsg))
+	broadcast(client, fmt.Sprintf("[Server]: %s\n", welcomeMsg))
 
 	for {
 		n, err = client.Read(buf)
@@ -87,7 +87,7 @@ func handle(client net.Conn) {
 
 		str = trimString(string(buf[:n]))
 
-		broadcast(client, fmt.Sprintf("%s: %s", username, str))
+		broadcast(client, fmt.Sprintf("%s: %s\n", username, str))
 	}
 }
 

@@ -38,7 +38,7 @@ func connect() {
 	go func() {
 		for {
 			n, _ := conn.Read(buf)
-			fmt.Printf("%s\n", buf[:n])
+			fmt.Printf("%s", buf[:n])
 		}
 	}()
 
